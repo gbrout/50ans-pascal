@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Galaxie de la Force — Galerie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #f0d070;
+      --dark: #0a0a0f;
+      --dark-card: #0f0f1a;
+      --darker: #060608;
+      --blue-glow: #4a9eff;
+      --red-glow: #ff4444;
+      --text: #d4c89a;
+      --text-dim: #8a7e5a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--darker);
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Starfield background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 70%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 80% 60%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 80%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 90%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 5%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5% 50%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 85%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 65%, rgba(255,255,255,0.6) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* HEADER */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 80px 20px 60px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+
+    .header-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .ornament-line {
+      height: 1px;
+      width: 120px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .rebel-logo {
+      width: 44px;
+      height: 44px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 12px rgba(201,168,76,0.6));
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(201,168,76,0.5)); }
+      50% { filter: drop-shadow(0 0 20px rgba(201,168,76,0.9)); }
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 50%, #8a6a20 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      text-shadow: none;
+      filter: drop-shadow(0 0 30px rgba(201,168,76,0.3));
+    }
+
+    .subtitle {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+    }
+
+    /* INTRO CRAWL */
+    .crawl-box {
+      max-width: 620px;
+      margin: 0 auto 60px;
+      padding: 24px 32px;
+      border: 1px solid rgba(201,168,76,0.2);
+      background: rgba(15,15,26,0.6);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+    .crawl-box::before,
+    .crawl-box::after {
+      content: '✦';
+      position: absolute;
+      color: var(--gold);
+      font-size: 10px;
+      top: 8px;
+    }
+    .crawl-box::before { left: 10px; }
+    .crawl-box::after { right: 10px; }
+
+    .crawl-box p {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text-dim);
+      text-align: center;
+      font-style: italic;
+      letter-spacing: 0.03em;
+    }
+
+    /* GALLERY SECTION */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 80px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .section-title::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .gallery-section {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Photo grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .photo-card {
+      position: relative;
+      background: var(--dark-card);
+      border: 1px solid rgba(201,168,76,0.15);
+      overflow: hidden;
+      cursor: pointer;
+      group: true;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .photo-card:hover {
+      border-color: rgba(201,168,76,0.5);
+      transform: translateY(-3px);
+    }
+
+    .photo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.85) 100%);
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .photo-card:hover::before {
+      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.9) 100%);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Scan line effect on hover */
+    .photo-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(201,168,76,0.015) 3px,
+        rgba(201,168,76,0.015) 4px
+      );
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .photo-card:hover::after {
+      opacity: 1;
+    }
+
+    .photo-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 20px 16px;
+      z-index: 3;
+      transform: translateY(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-card:hover .photo-info {
+      transform: translateY(0);
+    }
+
+    .photo-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+
+    .photo-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(212,200,154,0.5);
+      margin-bottom: 12px;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .photo-card:hover .btn-download {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-download:hover {
+      background: var(--gold);
+      color: var(--darker);
+    }
+
+    .btn-download svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* LIGHTSABER DIVIDER */
+    .lightsaber-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 60px auto;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+
+    .saber-handle {
+      width: 40px;
+      height: 10px;
+      background: linear-gradient(90deg, #555, #999, #555);
+      border-radius: 3px 0 0 3px;
+      position: relative;
+    }
+
+    .saber-blade-blue {
+      flex: 1;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-glow), rgba(74,158,255,0.2), transparent);
+      box-shadow: 0 0 10px rgba(74,158,255,0.6), 0 0 30px rgba(74,158,255,0.2);
+    }
+
+    .saber-blade-red {
+      flex: 1;
+      height: 3px;
+      background: linear-gradient(270deg, var(--red-glow), rgba(255,68,68,0.2), transparent);
+      box-shadow: 0 0 10px rgba(255,68,68,0.6), 0 0 30px rgba(255,68,68,0.2);
+    }
+
+    .saber-clash {
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #ffffff 0%, var(--gold-light) 40%, transparent 70%);
+      box-shadow: 0 0 20px rgba(255,255,200,0.9), 0 0 40px rgba(201,168,76,0.5);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* VIDEO SECTION */
+    .video-section {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .video-wrapper {
+      position: relative;
+      background: var(--dark-card);
+      border: 1px solid rgba(201,168,76,0.2);
+      overflow: hidden;
+    }
+
+    .video-corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-color: var(--gold);
+      border-style: solid;
+      z-index: 5;
+    }
+    .video-corner.tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+    .video-corner.tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+    .video-corner.bl { bottom: 50px; left: 10px; border-width: 0 0 2px 2px; }
+    .video-corner.br { bottom: 50px; right: 10px; border-width: 0 2px 2px 0; }
+
+    .video-player {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      position: relative;
+    }
+
+    .video-player video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: radial-gradient(ellipse at center, #0d0d1f 0%, #000 100%);
+    }
+
+    .video-placeholder-icon {
+      width: 80px;
+      height: 80px;
+      border: 2px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 2rem;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .video-placeholder p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .video-bottom-bar {
+      padding: 14px 20px;
+      background: rgba(10,10,20,0.8);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .video-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+    }
+
+    .btn-download-video {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 22px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn-download-video:hover {
+      background: var(--gold);
+      color: var(--darker);
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 20px 48px;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .lightbox-inner img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border: 1px solid rgba(201,168,76,0.3);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .lightbox-name {
+      text-align: center;
+      margin-top: 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .photo-card {
+      animation: fadeInUp 0.6s ease both;
+    }
+    .photo-card:nth-child(1) { animation-delay: 0.1s; }
+    .photo-card:nth-child(2) { animation-delay: 0.2s; }
+    .photo-card:nth-child(3) { animation-delay: 0.3s; }
+    .photo-card:nth-child(4) { animation-delay: 0.4s; }
+    .photo-card:nth-child(5) { animation-delay: 0.5s; }
+    .photo-card:nth-child(6) { animation-delay: 0.6s; }
+    .photo-card:nth-child(7) { animation-delay: 0.7s; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .photo-grid { grid-template-columns: 1fr; }
+      .btn-download { opacity: 1; transform: none; }
+      .video-bottom-bar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-ornament">
+      <div class="ornament-line"></div>
+      <svg class="rebel-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 5 L61 35 L93 35 L68 55 L78 85 L50 67 L22 85 L32 55 L7 35 L39 35 Z" fill="none" stroke="#c9a84c" stroke-width="3"/>
+        <circle cx="50" cy="50" r="20" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <path d="M50 30 L56 44 L72 44 L60 53 L65 68 L50 59 L35 68 L40 53 L28 44 L44 44 Z" fill="#c9a84c" opacity="0.6"/>
+      </svg>
+      <div class="ornament-line" style="transform:scaleX(-1)"></div>
+    </div>
+
+    <h1>La Galaxie de la Force</h1>
+    <p class="subtitle">Galerie Photographique · Édition Spéciale</p>
+
+    <div class="crawl-box">
+      <p>Dans une galaxie pas si lointaine, des héros et des légendes ont pris vie. Découvrez nos guerriers de la Force dans leurs costumes épiques, prêts à affronter le côté obscur.</p>
+    </div>
+  </header>
+
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <div class="section-title">Portraits des Héros</div>
+
+    <div class="photo-grid" id="photoGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- LIGHTSABER DIVIDER -->
+  <div class="lightsaber-divider">
+    <div class="saber-handle"></div>
+    <div class="saber-blade-blue"></div>
+    <div class="saber-clash"></div>
+    <div class="saber-blade-red"></div>
+    <div class="saber-handle" style="border-radius:0 3px 3px 0;"></div>
+  </div>
+
+  <!-- VIDEO SECTION -->
+  <section class="video-section">
+    <div class="section-title">Archives Holographiques</div>
+
+    <div class="video-wrapper">
+      <div class="video-corner tl"></div>
+      <div class="video-corner tr"></div>
+      <div class="video-corner bl"></div>
+      <div class="video-corner br"></div>
+
+      <div class="video-player">
+        <!-- Replace src with your video file path -->
+        <video id="mainVideo" controls>
+          <source src="video/50ans-Pascal.mp4" type="video/mp4">
+          <!-- Fallback si pas de vidéo -->
+        </video>
+        <div class="video-placeholder" id="videoPlaceholder">
+          <div class="video-placeholder-icon">▶</div>
+          <p>Transmission Holographique</p>
+        </div>
+      </div>
+
+      <div class="video-bottom-bar">
+        <span class="video-title">⬡ Enregistrement de la Mission · Ordre Jedi</span>
+        <a href="video/50ans-Pascal.mp4" download="50ans-Pascal.mp4.mp4" class="btn-download-video">
+          <svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14">
+            <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z"/>
+            <rect x="2" y="13" width="12" height="1.5" rx="0.5"/>
+          </svg>
+          Télécharger la vidéo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Que la Force soit avec vous · Galerie Officielle</p>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">✕ Fermer</button>
+      <img id="lightboxImg" src="" alt="">
+      <div class="lightbox-name" id="lightboxName"></div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // CONFIGURATION — modifier selon vos fichiers
+    // ==========================================
+    const photos = [
+	  { src: "photos/Adeline.jpg",     name: "Adeline",    role: "Technicienne de l'Alliance" },
+	  { src: "photos/Alex.jpg",        name: "Alex",       role: "Contrebandier de la Rébellion" },
+	  { src: "photos/Annaelle.png",    name: "Annaëlle",   role: "Jeune Padawan Jedi" },
+	  { src: "photos/Anne-Laure.JPG",  name: "Anne-Laure", role: "Princesse de l'Alliance" },
+	  { src: "photos/Axel.jpg",        name: "Axel",       role: "Apprenti Jedi" },
+	  { src: "photos/Caroline.png",    name: "Caroline",   role: "Maître Jedi" },
+	  { src: "photos/Chloé.jpg",       name: "Chloé",      role: "Chasseuse de Primes" },
+	  { src: "photos/Chris.png",       name: "Chris",      role: "Pilote de l'Alliance Rebelle" },
+	  { src: "photos/Cyril.jpg",       name: "Cyril",      role: "Officier de la République" },
+	  { src: "photos/Eléa.png",        name: "Éléa",       role: "Gardienne des Archives Jedi" },
+	  { src: "photos/Elena.JPG",       name: "Elena",      role: "Commandante de la Résistance" },
+	  { src: "photos/Elodie.png",      name: "Élodie",     role: "Sentinelle de la Force" },
+	  { src: "photos/Esteban.png",     name: "Esteban",    role: "Mandalorien en Exil" },
+	  { src: "photos/Gaelle.png",      name: "Gaëlle",     role: "Diplomate de l'Alliance" },
+	  { src: "photos/Guillaume.png",   name: "Guillaume",  role: "Chevalier Jedi" },
+	  { src: "photos/Jeanne.png",      name: "Jeanne",     role: "Espionne de la Rébellion" },
+	  { src: "photos/Jérémy.png",      name: "Jérémy",     role: "Soldat de l'Empire" },
+	  { src: "photos/Jules.png",       name: "Jules",      role: "Apprenti Contrebandier" },
+	  { src: "photos/Julia.png",       name: "Julia",      role: "Tisseuse de la Force" },
+	  { src: "photos/Liam.png",        name: "Liam",       role: "Scout de la Résistance" },
+	  { src: "photos/Luidivine.jpg",   name: "Ludivine",   role: "Médecin de l'Alliance" },
+	  { src: "photos/Marie.png",       name: "Marie",      role: "Capitaine Rebelle" },
+	  { src: "photos/Mathis.png",      name: "Mathis",     role: "Jeune Padawan" },
+	  { src: "photos/Maxence.png",     name: "Maxence",    role: "Garde du Temple Jedi" },
+	  { src: "photos/Melvil.jpg",      name: "Melvil",     role: "Ingénieur de la Flotte" },
+	  { src: "photos/Meryl.jpg",       name: "Méryl",      role: "Navigatrice Stellaire" },
+	  { src: "photos/Nathalie.png",    name: "Nathalie",   role: "Maître de l'Ordre Jedi" },
+	  { src: "photos/Nicolas.png",     name: "Nicolas",    role: "Chasseur de Primes" },
+	  { src: "photos/Owen.jpg",        name: "Owen",       role: "Fermier de Tatooine" },
+	  { src: "photos/Pascal.png",      name: "Pascal",     role: "Général de la Résistance" },
+	  { src: "photos/Pierre.png",      name: "Pierre",     role: "Amiral de la Rébellion" },
+	  { src: "photos/Rubens.jpg",      name: "Rubens",     role: "Mercenaire Galactique" },
+	  { src: "photos/Sylvain.jpg",     name: "Sylvain",    role: "Technicien de l'Alliance" },
+	  { src: "photos/Tom.png",         name: "Tom",        role: "Pilote Rebelle" },
+	  { src: "photos/Virginie.png",    name: "Virginie",   role: "Sénatrice de la République" },
+	];
+    // ==========================================
+
+    // Build grid
+    const grid = document.getElementById('photoGrid');
+
+    photos.forEach((photo, i) => {
+      const card = document.createElement('div');
+      card.className = 'photo-card';
+      card.innerHTML = `
+        <img src="${photo.src}" alt="${photo.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 380%22><rect fill=%22%230f0f1a%22 width=%22400%22 height=%22380%22/><text x=%22200%22 y=%22200%22 text-anchor=%22middle%22 fill=%22%23c9a84c%22 font-size=%2240%22>☆</text></svg>'" onclick="openLightbox('${photo.src}', '${photo.name}')">
+        <div class="photo-info">
+          <div class="photo-name">${photo.name}</div>
+          <div class="photo-role">${photo.role}</div>
+          <a href="${photo.src}" download="${photo.src}" class="btn-download" onclick="event.stopPropagation()">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z"/>
+              <rect x="2" y="13" width="12" height="1.5" rx="0.5"/>
+            </svg>
+            Télécharger
+          </a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Lightbox
+    function openLightbox(src, name) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxName').textContent = name;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (!event || event.target === document.getElementById('lightbox') || event.target.tagName === 'BUTTON') {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Hide video placeholder if video loads
+    const video = document.getElementById('mainVideo');
+    const placeholder = document.getElementById('videoPlaceholder');
+    video.addEventListener('loadeddata', () => {
+      placeholder.style.display = 'none';
+    });
+    video.addEventListener('error', () => {
+      // keep placeholder visible
+    });
+  </script>
+</body>
+</html>
